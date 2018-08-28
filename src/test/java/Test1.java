@@ -1,5 +1,4 @@
-package test.java;
-
+import gb.client.Main;
 import gb.server.AuthService;
 import org.junit.Assert;
 import org.junit.Test;
@@ -14,5 +13,12 @@ public class Test1 {
         } catch (SQLException e) {
             e.printStackTrace();
         }
+    }
+
+    @Test
+    public void test2() {
+        gb.server.Main server = new gb.server.Main();
+        gb.client.Main client = new gb.client.Main();
+        Assert.assertEquals("ok", gb.client.Controller.testClientConnection());
     }
 }

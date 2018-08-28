@@ -54,7 +54,7 @@ public class Controller {
 
     final String IP_ADDRESS = "localhost";
     final int PORT = 8189;
-    boolean isAuthohorized;
+    static boolean isAuthohorized;
 
     public void setAuthohorized(boolean isAuthohorized) {
         this.isAuthohorized = isAuthohorized;
@@ -83,11 +83,11 @@ public class Controller {
             setAuthohorized(false);
             new Thread(() -> {
                 try {
-
                     while (true) {
                         String str = in.readUTF();
                         if (str.startsWith("/authok")) {
                             setAuthohorized(true);
+                            System.out.println("client run...");
                             break;
                         } else {
                             chatArea.appendText(str + "\n");
@@ -150,5 +150,13 @@ public class Controller {
             e.printStackTrace();
         }
     }
+
+    public static String testClientConnection() {
+        if(!isAuthohorized){
+            return "ok";
+        }
+        return null;
+    }
+
 
 }

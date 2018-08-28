@@ -6,11 +6,15 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 
+import java.util.Objects;
+import java.util.Scanner;
+
 public class Main extends Application {
 
     @Override
     public void start(Stage primaryStage) throws Exception{
-        Parent root = FXMLLoader.load(getClass().getResource("client.fxml"));
+        Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getClassLoader().getResource("client.fxml")));
+        //Parent root = FXMLLoader.load(getClass().getResource("client.fxml"));
         primaryStage.setTitle("2k18SummerChat");
         primaryStage.setScene(new Scene(root, 400, 400));
         primaryStage.show();
@@ -20,4 +24,6 @@ public class Main extends Application {
     public static void main(String[] args) {
         launch(args);
     }
+
+
 }
